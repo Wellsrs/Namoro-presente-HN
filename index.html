@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nosso Amor ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #1a1a1a;
+      overflow-x: hidden;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      position: relative;
+    }
+
+    img {
+      width: 100%;
+      max-width: 280px;
+      border-radius: 10px;
+      margin-top: 20px;
+      z-index: 1;
+    }
+
+    h2 {
+      margin-top: 20px;
+      font-size: 20px;
+      color: #f15b5b;
+    }
+
+    #timer {
+      font-size: 16px;
+      margin: 10px 0 30px;
+      white-space: pre-line;
+    }
+
+    p {
+      max-width: 700px;
+      line-height: 1.6;
+      font-size: 16px;
+      margin: 0 auto;
+      padding: 0 10px;
+      z-index: 1;
+      position: relative;
+    }
+
+    .music-btn {
+      background-color: #f15b5b;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px;
+      z-index: 2;
+      position: relative;
+    }
+
+    @media (max-width: 500px) {
+      p {
+        font-size: 15px;
+      }
+    }
+
+    /* Corações animados */
+    .heart {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: red;
+      transform: rotate(45deg);
+      animation: float 8s linear infinite;
+      opacity: 0.6;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -7.5px;
+      left: 0;
+    }
+
+    .heart::after {
+      top: 0;
+      left: -7.5px;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(45deg);
+        opacity: 0;
+      }
+      50% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-10vh) rotate(45deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Música -->
+  <audio id="music" loop>
+    <source src="musica-romantica.mp3" type="audio/mpeg" />
+    Seu navegador não suporta áudio.
+  </audio>
+
+  <img src="a5e39d8f-59c1-46ab-92d1-e87ca41f998b.png" alt="Foto juntos" />
+
+  <h2>Juntos há:</h2>
+  <div id="timer"></div>
+
+  <button class="music-btn" onclick="toggleMusic()">▶️ Tocar / Pausar música</button>
+
+  <p>
+    Incrível, como a cada mês que passa, continuo amando a pessoa mais perfeita desse mundo, o amor da minha vida, 
+    a pessoa que me mostrou que amar não é só sorrir, mas é chorar, é se abrir, é se emocionar, é com certeza, a melhor coisa do mundo, se é do seu lado. 
+    Feliz 1 ano e 5 meses amor meu, você foi a melhor coisa que me aconteceu, pois com você, descobri meu mundo, com quem quero meu futuro, 
+    e que minha vida com certeza, quero que seja toda ao seu lado. Muito obrigado por escolher ficar, e ser o amor da minha vida. ❤️
+  </p>
+
+  <!-- Corações -->
+  <script>
+    for (let i = 0; i < 25; i++) {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = 5 + Math.random() * 5 + "s";
+      document.body.appendChild(heart);
+    }
+
+    // Contador de tempo
+    const startDate = new Date("2023-12-06T00:00:00");
+    const timer = document.getElementById("timer");
+
+    function updateTimer() {
+      const now = new Date();
+      let diff = now - startDate;
+
+      const msInMinute = 60000;
+      const msInHour = 3600000;
+      const msInDay = 86400000;
+      const msInMonth = msInDay * 30.44;
+      const msInYear = msInDay * 365.25;
+
+      const years = Math.floor(diff / msInYear);
+      diff -= years * msInYear;
+
+      const months = Math.floor(diff / msInMonth);
+      diff -= months * msInMonth;
+
+      const days = Math.floor(diff / msInDay);
+      diff -= days * msInDay;
+
+      const hours = Math.floor(diff / msInHour);
+      diff -= hours * msInHour;
+
+      const minutes = Math.floor(diff / msInMinute);
+      diff -= minutes * msInMinute;
+
+      const seconds = Math.floor(diff / 1000);
+
+      timer.innerText = `${years} anos, ${months} meses, ${days} dias\n${hours} horas, ${minutes} minutos e ${seconds} segundos`;
+    }
+
+    setInterval(updateTimer, 1000);
+    updateTimer();
+
+    // Controle da música
+    const music = document.getElementById("music");
+    function toggleMusic() {
+      if (music.paused) {
+        music.play();
+      } else {
+        music.pause();
+      }
+    }
+  </script>
+</body>
+</html>
